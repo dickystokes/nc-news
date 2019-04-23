@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Heading from "./components/Heading";
+import Nav from "./components/Nav";
+import Articles from "./components/Articles";
+import Footer from "./components/Footer";
+import * as api from "./api";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    topics: []
+  };
+  render() {
+    return (
+      <div className="App">
+        <header className="NC News" />
+        <Heading />
+        <Nav topics={this.state.topics} />
+        <Articles />
+        <Footer />
+      </div>
+    );
+  }
+
+  componentDidMount() {
+    this.fetchTopics();
+  }
+
+  fetchTopics = () => {
+    api
+      .getTopics()
+      .then(topics => {
+        this.setState({
+          topics
+        });
+      })
+      .catch(console.log, "<--this is an error");
+  };
 }
 
 export default App;
