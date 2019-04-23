@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "@reach/router";
 
 class Articles extends Component {
   render() {
@@ -11,7 +12,8 @@ class Articles extends Component {
           {articles.map(article => (
             <li id={article.article_id} key={article.article_id}>
               Title: {article.title} <br />
-              Author: {article.author}
+              Author: {article.author} <br />
+              <Link to={`/articles/${article.article_id}`}>Read More...</Link>
             </li>
           ))}
         </ul>
