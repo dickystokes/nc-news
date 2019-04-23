@@ -4,13 +4,14 @@ import Heading from "./components/Heading";
 import Nav from "./components/Nav";
 import Articles from "./components/Articles";
 import Footer from "./components/Footer";
-import { Router, Link } from "@reach/router";
+import { Router } from "@reach/router";
 import * as api from "./api";
 
 class App extends Component {
   state = {
     topics: [],
-    articles: []
+    articles: [],
+    article_id: 0
   };
   render() {
     return (
@@ -18,7 +19,11 @@ class App extends Component {
         <Heading />
         <Nav topics={this.state.topics} />
         <Router className="Router">
-          <Articles path="/" articles={this.state.articles} />
+          <Articles
+            path="/"
+            articles={this.state.articles}
+            articleCardTrigger={this.articleCardTrigger}
+          />
         </Router>
         <Footer />
       </div>
@@ -50,6 +55,12 @@ class App extends Component {
         });
       })
       .catch(console.log, "<--this is an error");
+  };
+
+  articleCardTrigger = articleID => {
+    this.setState({
+      article_id: articleID
+    });
   };
 }
 
