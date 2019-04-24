@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
+import Auth from "./Auth";
 
 function Nav({ topics }) {
   return (
@@ -10,6 +11,7 @@ function Nav({ topics }) {
           {topic.slug}
         </Link>
       ))}
+      <Auth />
     </nav>
   );
 }

@@ -15,7 +15,6 @@ export const getArticles = async topic => {
 };
 
 export const getArticle = async article_id => {
-  console.log(article_id, "<<< api function");
   const { data } = await axios.get(`${BASE_URL}/api/articles/${article_id}`);
   return data.article;
 };

@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import { Router } from "@reach/router";
 import * as api from "./api";
 import ArticleCard from "./components/ArticleCard";
-
+import Toolbar from "./components/Toolbar";
 class App extends Component {
   state = {
     topics: [],
@@ -18,6 +18,7 @@ class App extends Component {
       <div className="App">
         <Heading />
         <Nav topics={this.state.topics} />
+        <Toolbar />
         <Router className="Router">
           <Articles path="/" />
           <Articles path="/topics/:topic" />

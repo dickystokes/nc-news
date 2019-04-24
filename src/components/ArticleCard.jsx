@@ -9,17 +9,16 @@ class ArticleCard extends Component {
   };
   render() {
     const { article } = this.state;
-    console.log(article);
     const { article_id } = this.props;
-    console.log(article_id);
+
     return (
       <div className="article-card">
         <main className="articles">
           <h2>{article.title}</h2>
           {article.author} <p />
-          {article.body} <br />
+          {article.body} <hr />
           Votes : {article.votes}
-          <button>I like it!</button>
+          <button> I love it!</button>
           <button>This is Rubbish!</button>
         </main>
         <Comments article_id={article_id} />
