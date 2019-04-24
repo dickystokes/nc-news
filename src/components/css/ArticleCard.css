@@ -1,0 +1,19 @@
+.article-card {
+  display: grid;
+  height: 100vh;
+  grid-row: 1fr 1fr;
+  grid-template-areas:
+    "articles"
+    "comments";
+}
+
+.articles {
+  background-color: rgba(255, 0, 43, 0.1);
+  overflow-y: scroll;
+  max-height: 75vh;
+}
+
+.comments {
+  background-color: rgb(3, 3, 245, 0.1);
+  overflow-y: scroll;
+}

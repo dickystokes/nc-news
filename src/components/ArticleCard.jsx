@@ -1,4 +1,6 @@
 import React from "react";
+import Comments from "../components/Comments";
+import "./css/ArticleCard.css";
 
 function ArticleCard({ articles, article_id }) {
   let articleCard = [];
@@ -7,9 +9,13 @@ function ArticleCard({ articles, article_id }) {
   });
 
   return (
-    <div>
-      <h2>{articleCard[0].title}</h2>
-      {articleCard[0].body}
+    <div className="article-card">
+      <main className="articles">
+        <h2>{articleCard[0].title}</h2>
+        {articleCard[0].author} <p />
+        {articleCard[0].body}
+      </main>
+      <Comments article_id={article_id} />
     </div>
   );
 }

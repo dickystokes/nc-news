@@ -15,7 +15,6 @@ class App extends Component {
     article_id: 0
   };
   render() {
-    console.log(this.state.article_id);
     return (
       <div className="App">
         <Heading />
