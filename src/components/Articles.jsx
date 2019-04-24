@@ -12,7 +12,7 @@ const Articles = ({ articles, articleCardTrigger }) => {
             Author: {article.author} <br />
             <Link
               to={`/articles/${article.article_id}`}
-              onClick={article => articleCardTrigger(article.article_id)}
+              onClick={event => articleCardTrigger(article.article_id)}
             >
               Read More...
             </Link>

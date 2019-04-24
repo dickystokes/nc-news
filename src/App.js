@@ -6,6 +6,7 @@ import Articles from "./components/Articles";
 import Footer from "./components/Footer";
 import { Router } from "@reach/router";
 import * as api from "./api";
+import ArticleCard from "./components/ArticleCard";
 
 class App extends Component {
   state = {
@@ -14,6 +15,7 @@ class App extends Component {
     article_id: 0
   };
   render() {
+    console.log(this.state.article_id);
     return (
       <div className="App">
         <Heading />
@@ -23,6 +25,11 @@ class App extends Component {
             path="/"
             articles={this.state.articles}
             articleCardTrigger={this.articleCardTrigger}
+          />
+          <ArticleCard
+            path={`/articles/${this.state.article_id}`}
+            articles={this.state.articles}
+            article_id={this.state.article_id}
           />
         </Router>
         <Footer />
@@ -58,6 +65,7 @@ class App extends Component {
   };
 
   articleCardTrigger = articleID => {
+    console.log(articleID);
     this.setState({
       article_id: articleID
     });
