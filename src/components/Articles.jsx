@@ -1,26 +1,53 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "@reach/router";
+import * as api from "../api";
 
-const Articles = ({ articles, articleCardTrigger }) => {
-  return (
-    <div className="Articles-list">
-      <h2>All Articles</h2>
-      <ul>
-        {articles.map(article => (
-          <li id={article.article_id} key={article.article_id}>
-            Title: {article.title} <br />
-            Author: {article.author} <br />
-            <Link
-              to={`/articles/${article.article_id}`}
-              onClick={event => articleCardTrigger(article.article_id)}
+class Articles extends Component {
+  state = {
+    articles: []
+  };
+  render() {
+    const { articles } = this.state;
+    console.log(articles);
+    return (
+      <div className="Articles-list">
+        <h2>All Articles</h2>
+        <ul>
+          {articles.map(article => (
+            <li
+              id={article.article_id}
+              key={article.article_id}
+              className="article"
             >
-              Read More...
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+              Title: {article.title} <br />
+              Author: {article.author} <br />
+              <Link to={`/articles/${article.article_id}`} articles={articles}>
+                Read More...
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+  componentDidMount() {
+    this.fetchArticles();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.topic !== prevProps.topic) this.fetchArticles();
+  }
+
+  fetchArticles = () => {
+    api
+      .getArticles(this.props.topic)
+      .then(articles => {
+        this.setState({
+          articles
+        });
+      })
+      .catch(console.log, "<--this is an error");
+  };
+}
 
 export default Articles;

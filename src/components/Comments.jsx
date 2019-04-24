@@ -8,11 +8,9 @@ class Comments extends Component {
   };
   render() {
     const { article_id } = this.props;
-    console.log(this.state.comments);
     return (
       <div className="comments">
         <h3>Comments</h3>
-        {article_id}
         <CommentCard comments={this.state.comments} />
       </div>
     );

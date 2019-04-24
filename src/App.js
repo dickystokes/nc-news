@@ -11,7 +11,6 @@ import ArticleCard from "./components/ArticleCard";
 class App extends Component {
   state = {
     topics: [],
-    articles: [],
     article_id: 0
   };
   render() {
@@ -20,15 +19,11 @@ class App extends Component {
         <Heading />
         <Nav topics={this.state.topics} />
         <Router className="Router">
-          <Articles
-            path="/"
-            articles={this.state.articles}
-            articleCardTrigger={this.articleCardTrigger}
-          />
+          <Articles path="/" />
+          <Articles path="/topics/:topic" />
           <ArticleCard
-            path={`/articles/${this.state.article_id}`}
+            path={`/articles/:article_id`}
             articles={this.state.articles}
-            article_id={this.state.article_id}
           />
         </Router>
         <Footer />
@@ -38,7 +33,6 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchTopics();
-    this.fetchArticles();
   }
 
   fetchTopics = () => {
@@ -47,17 +41,6 @@ class App extends Component {
       .then(topics => {
         this.setState({
           topics
-        });
-      })
-      .catch(console.log, "<--this is an error");
-  };
-
-  fetchArticles = () => {
-    api
-      .getArticles()
-      .then(articles => {
-        this.setState({
-          articles
         });
       })
       .catch(console.log, "<--this is an error");

@@ -7,9 +7,17 @@ export const getTopics = async () => {
   return data.topics;
 };
 
-export const getArticles = async () => {
-  const { data } = await axios.get(`${BASE_URL}/api/articles`);
+export const getArticles = async topic => {
+  const { data } = await axios.get(
+    `${BASE_URL}/api/articles${topic ? `?topic=${topic} ` : ""}`
+  );
   return data.articles;
+};
+
+export const getArticle = async article_id => {
+  console.log(article_id, "<<< api function");
+  const { data } = await axios.get(`${BASE_URL}/api/articles/${article_id}`);
+  return data.article;
 };
 export const getComments = async article_id => {
   const { data } = await axios.get(

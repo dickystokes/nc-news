@@ -6,7 +6,7 @@ function Nav({ topics }) {
     <nav className="Nav">
       <Link to="/">Home</Link>
       {topics.map(topic => (
-        <Link to={`/${topic.slug}`} key={topic.slug}>
+        <Link to={`/topics/${topic.slug}`} key={topic.slug}>
           {topic.slug}
         </Link>
       ))}
