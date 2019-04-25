@@ -15,8 +15,8 @@ class ArticleCard extends Component {
       <div className="article-card">
         <main className="articles">
           <h2>{article.title}</h2>
-          {article.author} <p />
-          {article.body} <hr />
+          <p>{article.author}</p>
+          <p>{article.body}</p> <hr />
           Votes : {article.votes}
           <button> I love it!</button>
           <button>This is Rubbish!</button>

@@ -10,8 +10,7 @@ import ArticleCard from "./components/ArticleCard";
 import Toolbar from "./components/Toolbar";
 class App extends Component {
   state = {
-    topics: [],
-    article_id: 0
+    topics: []
   };
   render() {
     return (
@@ -47,11 +46,11 @@ class App extends Component {
       .catch(console.log, "<--this is an error");
   };
 
-  articleCardTrigger = articleID => {
-    console.log(articleID);
-    this.setState({
-      article_id: articleID
-    });
+  login = username => {
+    api
+      .getUser(username)
+      .then(user => {})
+      .catch(console.log);
   };
 }
 

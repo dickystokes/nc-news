@@ -7,10 +7,13 @@ class Comments extends Component {
     comments: []
   };
   render() {
-    const { article_id } = this.props;
     return (
       <div className="comments">
         <h3>Comments</h3>
+        <input id="add-comment" placeholder="Add Comment" />
+        <span role="img" aria-label="postbox">
+          &#128238;
+        </span>
         <CommentCard comments={this.state.comments} />
       </div>
     );

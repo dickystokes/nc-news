@@ -8,14 +8,15 @@ function CommentCard({ comments }) {
         <p key={comment.comment_id} className="comment">
           <b>{comment.author}</b>
           <br />
-          {comment.body} <hr />
+          {comment.body}
+          <br />
           Votes: {comment.votes}
-          <button>
-            <i class="em em---1" />
-          </button>
-          <button>
-            <i class="em em--1" />
-          </button>
+          <span role="img" aria-label="thumbs-up">
+            &#128077;
+          </span>
+          <span role="img" aria-label="thumbs-down">
+            &#128078;
+          </span>
         </p>
       ))}
     </div>
