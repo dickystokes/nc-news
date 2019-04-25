@@ -22,7 +22,10 @@ class Auth extends Component {
             </form>
           </>
         ) : (
-          <p className="Auth">{`Logged in as ${user[0].name}`}</p>
+          <p className="Auth">
+            {`Logged in as ${user[0].name}`}
+            <button>Logout</button>
+          </p>
         )}
       </>
     );

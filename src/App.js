@@ -16,8 +16,6 @@ class App extends Component {
     user: []
   };
   render() {
-    console.log(this.props);
-    console.log(this.state.user);
     return (
       <div className="App">
         <Heading />
@@ -39,6 +37,8 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const storedData = JSON.parse(localStorage.getItem("user"));
+    // storedData !== null ? storedData : null;
     this.fetchTopics();
     this.login();
   }
@@ -58,6 +58,7 @@ class App extends Component {
     api
       .getUser(username)
       .then(user => {
+        localStorage.setItem("user", JSON.stringify(user));
         this.setState({
           user
         });

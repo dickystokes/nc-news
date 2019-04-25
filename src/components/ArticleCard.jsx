@@ -25,7 +25,7 @@ class ArticleCard extends Component {
                 window.confirm("Please log in");
                 this.setState({ OptimisticVote: 0 });
               } else if (this.state.OptimisticVote === 1) {
-                window.confirm("Stop being such a hater, we get it!");
+                window.confirm("You have already spread the love!");
               } else {
                 api
                   .changeArticleVote(1, article.article_id)
