@@ -18,8 +18,25 @@ class ArticleCard extends Component {
           <p>{article.author}</p>
           <p>{article.body}</p> <hr />
           Votes : {article.votes}
-          <button> I love it!</button>
-          <button>This is Rubbish!</button>
+          <button
+            onClick={e => {
+              if (user.length === 0) {
+                window.confirm("Please log in");
+              }
+            }}
+          >
+            {" "}
+            I love it!
+          </button>
+          <button
+            onClick={e => {
+              if (user.length === 0) {
+                window.confirm("Please log in");
+              }
+            }}
+          >
+            This is Rubbish!
+          </button>
         </main>
         <Comments article_id={article_id} user={user} />
       </div>

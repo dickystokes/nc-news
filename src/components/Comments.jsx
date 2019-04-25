@@ -12,7 +12,20 @@ class Comments extends Component {
       <div className="comments">
         <h3>Comments</h3>
         {user.length === 0 ? (
-          <p>Please login</p>
+          <>
+            <input id="add-comment" placeholder="Log in to add comments" />
+            <span
+              role="img"
+              aria-label="postbox"
+              onClick={e => {
+                if (user.length === 0) {
+                  window.confirm("Please log in");
+                }
+              }}
+            >
+              &#128238;
+            </span>
+          </>
         ) : (
           <>
             <input id="add-comment" placeholder="Add Comment" />
@@ -21,7 +34,7 @@ class Comments extends Component {
             </span>
           </>
         )}
-        <CommentCard comments={this.state.comments} />
+        <CommentCard comments={this.state.comments} user={user} />
       </div>
     );
   }

@@ -22,7 +22,7 @@ class App extends Component {
       <div className="App">
         <Heading />
         <Nav topics={this.state.topics} />
-        <Auth login={this.login} />
+        <Auth login={this.login} user={this.state.user} />
         <Toolbar />
         <Router className="Router">
           <Articles path="/" />

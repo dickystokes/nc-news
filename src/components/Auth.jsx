@@ -5,19 +5,26 @@ class Auth extends Component {
     username: "tickle122"
   };
   render() {
-    console.log(this.state.username);
-    console.log(this.props);
+    const { user } = this.props;
     return (
-      <form className="Auth" onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          id="username"
-          placeholder="username"
-          value={this.state.username}
-          onChange={this.handleChange}
-        />
-        <input type="submit" value="Login" />
-      </form>
+      <>
+        {user.length === 0 ? (
+          <>
+            <form className="Auth" onSubmit={this.handleSubmit}>
+              <input
+                type="text"
+                id="username"
+                placeholder="username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+              <input type="submit" value="Login" />
+            </form>
+          </>
+        ) : (
+          <p className="Auth">{`Logged in as ${user[0].name}`}</p>
+        )}
+      </>
     );
   }
   handleChange = e => {
