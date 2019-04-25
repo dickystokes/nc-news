@@ -9,7 +9,7 @@ class ArticleCard extends Component {
   };
   render() {
     const { article } = this.state;
-    const { article_id } = this.props;
+    const { article_id, user } = this.props;
 
     return (
       <div className="article-card">
@@ -21,7 +21,7 @@ class ArticleCard extends Component {
           <button> I love it!</button>
           <button>This is Rubbish!</button>
         </main>
-        <Comments article_id={article_id} />
+        <Comments article_id={article_id} user={user} />
       </div>
     );
   }

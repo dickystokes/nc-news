@@ -6,8 +6,9 @@ class Auth extends Component {
   };
   render() {
     console.log(this.state.username);
+    console.log(this.props);
     return (
-      <form>
+      <form className="Auth" onSubmit={this.handleSubmit}>
         <input
           type="text"
           id="username"
@@ -15,7 +16,7 @@ class Auth extends Component {
           value={this.state.username}
           onChange={this.handleChange}
         />
-        <input type="submit" value="Login" onClick={this.handleSubmit} />
+        <input type="submit" value="Login" />
       </form>
     );
   }
@@ -29,7 +30,7 @@ class Auth extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { username } = this.state;
-    this.props.submit = username;
+    this.props.login(username);
   };
 }
 export default Auth;

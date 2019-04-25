@@ -5,11 +5,11 @@ function CommentCard({ comments }) {
   return (
     <div>
       {comments.map(comment => (
-        <p key={comment.comment_id} className="comment">
+        <li key={comment.comment_id} className="comment">
           <b>{comment.author}</b>
           <br />
           {comment.body}
-          <br />
+          <hr />
           Votes: {comment.votes}
           <span role="img" aria-label="thumbs-up">
             &#128077;
@@ -17,7 +17,7 @@ function CommentCard({ comments }) {
           <span role="img" aria-label="thumbs-down">
             &#128078;
           </span>
-        </p>
+        </li>
       ))}
     </div>
   );

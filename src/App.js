@@ -8,20 +8,27 @@ import { Router } from "@reach/router";
 import * as api from "./api";
 import ArticleCard from "./components/ArticleCard";
 import Toolbar from "./components/Toolbar";
+import Auth from "./components/Auth";
+
 class App extends Component {
   state = {
-    topics: []
+    topics: [],
+    user: []
   };
   render() {
+    console.log(this.props);
+    console.log(this.state.user);
     return (
       <div className="App">
         <Heading />
         <Nav topics={this.state.topics} />
+        <Auth login={this.login} />
         <Toolbar />
         <Router className="Router">
           <Articles path="/" />
           <Articles path="/topics/:topic" />
           <ArticleCard
+            user={this.state.user}
             path={`/articles/:article_id`}
             articles={this.state.articles}
           />
@@ -33,6 +40,7 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchTopics();
+    this.login();
   }
 
   fetchTopics = () => {
@@ -49,7 +57,11 @@ class App extends Component {
   login = username => {
     api
       .getUser(username)
-      .then(user => {})
+      .then(user => {
+        this.setState({
+          user
+        });
+      })
       .catch(console.log);
   };
 }

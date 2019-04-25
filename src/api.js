@@ -26,6 +26,7 @@ export const getComments = async article_id => {
 };
 
 export const getUser = async username => {
-  const { data } = await axios.get(`${BASE_URL}/users/${username}`);
-  return data.username;
+  console.log(username);
+  const { data } = await axios.get(`${BASE_URL}/api/users/${username}`);
+  return data.user;
 };
