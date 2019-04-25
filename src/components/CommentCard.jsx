@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./css/CommentCard.css";
+import * as api from "../api";
 
 class CommentCard extends Component {
   state = {
@@ -23,9 +24,13 @@ class CommentCard extends Component {
                 } else if (this.state.OptimisticVote === -1) {
                   window.confirm("Stop being such a hater, we get it!");
                 } else {
-                  this.setState({
-                    OptimisticVote: this.state.OptimisticVote - 1
-                  });
+                  api
+                    .changeCommentVote(-1, comment.comment_id)
+                    .then(OptimisticVote => {
+                      this.setState({
+                        OptimisticVote: this.state.OptimisticVote - 1
+                      });
+                    });
                 }
               }}
             >
@@ -42,9 +47,13 @@ class CommentCard extends Component {
                 } else if (this.state.OptimisticVote === 1) {
                   window.confirm("You have already spread the love!");
                 } else {
-                  this.setState({
-                    OptimisticVote: this.state.OptimisticVote + 1
-                  });
+                  api
+                    .changeCommentVote(1, comment.comment_id)
+                    .then(OptimisticVote => {
+                      this.setState({
+                        OptimisticVote: this.state.OptimisticVote + 1
+                      });
+                    });
                 }
               }}
             >
