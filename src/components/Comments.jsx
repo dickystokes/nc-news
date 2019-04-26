@@ -8,6 +8,7 @@ class Comments extends Component {
   };
   render() {
     const { user } = this.props;
+    console.log(this.state);
     const storedMessage = JSON.parse(localStorage.getItem("comment")).value;
     return (
       <div className="comments">
@@ -17,9 +18,9 @@ class Comments extends Component {
             <textarea
               rows="4"
               cols="50"
-              id="add-comment"
+              id="addComment"
               placeholder="Log in to add comments"
-              onChange={this.handleComment}
+              onChange={this.handleInvalidComment}
             />
             <span
               role="img"
@@ -38,14 +39,17 @@ class Comments extends Component {
             <textarea
               rows="4"
               cols="50"
-              id="add-comment"
+              id="addComment"
               placeholder="Type your comment here..."
+              onChange={this.handleValidComment}
             >
               {storedMessage}
             </textarea>
-            <span role="img" aria-label="postbox">
-              &#128238;
-            </span>
+            <button onClick={this.sendComment}>
+              <span role="img" aria-label="postbox">
+                &#128238;
+              </span>
+            </button>
           </p>
         )}
         <CommentCard comments={this.state.comments} user={user} />
@@ -68,9 +72,24 @@ class Comments extends Component {
       .catch(console.log, "<--this is an error");
   };
 
-  handleComment = e => {
+  handleInvalidComment = e => {
     const { value } = e.target;
     localStorage.setItem("comment", JSON.stringify({ value }));
+  };
+
+  handleValidComment = e => {
+    const { id, value } = e.target;
+    this.setState({
+      [id]: value
+    });
+  };
+
+  sendComment = () => {
+    api.postComment(
+      this.props.article_id,
+      this.props.user[0].username,
+      this.state.addComment
+    );
   };
 }
 

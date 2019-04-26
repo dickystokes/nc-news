@@ -43,3 +43,11 @@ export const changeArticleVote = async (like, id) => {
   );
   return data.article;
 };
+
+export const postComment = async (article_id, user, body) => {
+  const { data } = await axios.post(
+    `${BASE_URL}/api/articles/${article_id}/comments`,
+    { username: user, body: body }
+  );
+  return data.newComment;
+};
