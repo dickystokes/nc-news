@@ -95,7 +95,6 @@ class Comments extends Component {
       this.props.user[0].username,
       this.state.addComment
     );
-    await this.componentDidMount();
   };
 }
 

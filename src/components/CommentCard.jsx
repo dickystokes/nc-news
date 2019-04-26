@@ -7,6 +7,7 @@ class CommentCard extends Component {
     OptimisticVote: 0
   };
   render() {
+    console.log(this.state);
     const { comments, user } = this.props;
     return (
       <div>
@@ -18,7 +19,7 @@ class CommentCard extends Component {
             <hr />
             <button
               onClick={e => {
-                if (user.length === 0) {
+                if (user === null || user.length === 0) {
                   window.confirm("Please log in");
                   this.setState({ OptimisticVote: 0 });
                 } else if (this.state.OptimisticVote === -1) {
@@ -28,7 +29,8 @@ class CommentCard extends Component {
                     .changeCommentVote(-1, comment.comment_id)
                     .then(OptimisticVote => {
                       this.setState({
-                        OptimisticVote: this.state.OptimisticVote - 1
+                        OptimisticVote: this.state.OptimisticVote - 1,
+                        comment_id: comment.comment_id
                       });
                     });
                 }
@@ -38,10 +40,14 @@ class CommentCard extends Component {
                 &#128078;
               </span>
             </button>
-            Votes: {comment.votes + this.state.OptimisticVote}
+            Votes:{" "}
+            {comment.votes +
+              (comment.comment_id === this.state.comment_id
+                ? this.state.OptimisticVote
+                : 0)}
             <button
               onClick={e => {
-                if (user.length === 0) {
+                if (user === null || user.length === 0) {
                   window.confirm("Please log in");
                   this.setState({ OptimisticVote: 0 });
                 } else if (this.state.OptimisticVote === 1) {
@@ -51,7 +57,8 @@ class CommentCard extends Component {
                     .changeCommentVote(1, comment.comment_id)
                     .then(OptimisticVote => {
                       this.setState({
-                        OptimisticVote: this.state.OptimisticVote + 1
+                        OptimisticVote: this.state.OptimisticVote + 1,
+                        comment_id: comment.comment_id
                       });
                     });
                 }
