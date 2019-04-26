@@ -7,8 +7,9 @@ class CommentCard extends Component {
     OptimisticVote: 0
   };
   render() {
-    console.log(this.state);
     const { comments, user } = this.props;
+    console.log(comments);
+
     return (
       <div>
         {comments.map(comment => (

@@ -4,12 +4,10 @@ import CommentCard from "../components/CommentCard";
 
 class Comments extends Component {
   state = {
-    comments: [],
-    Newcomment: []
+    comments: []
   };
   render() {
     const { user } = this.props;
-    console.log(this.state);
     let storedMessage = "";
     JSON.parse(localStorage.getItem("comment")) !== null
       ? (storedMessage = JSON.parse(localStorage.getItem("comment")).value)
@@ -90,11 +88,25 @@ class Comments extends Component {
   };
 
   sendComment = async () => {
-    api.postComment(
-      this.props.article_id,
-      this.props.user[0].username,
-      this.state.addComment
-    );
+    api
+      .postComment(
+        this.props.article_id,
+        this.props.user[0].username,
+        this.state.addComment
+      )
+      .then(async newComment => {
+        await this.setState(state => ({
+          newComment: {
+            article_id: this.props.article_id,
+            author: this.props.user[0].username,
+            body: this.state.addComment,
+            comment_id: NaN,
+            created_at: "Just Now",
+            votes: 0
+          },
+          comments: [newComment, ...state.comments]
+        }));
+      });
   };
 }
 
