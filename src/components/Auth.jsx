@@ -8,7 +8,7 @@ class Auth extends Component {
     const { user } = this.props;
     return (
       <>
-        {user.length === 0 ? (
+        {user === null || user.length === 0 ? (
           <>
             <form className="Auth" onSubmit={this.handleSubmit}>
               <input

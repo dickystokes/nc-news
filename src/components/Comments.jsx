@@ -4,40 +4,45 @@ import CommentCard from "../components/CommentCard";
 
 class Comments extends Component {
   state = {
-    comments: []
+    comments: [],
+    Newcomment: []
   };
   render() {
     const { user } = this.props;
     console.log(this.state);
-    const storedMessage = JSON.parse(localStorage.getItem("comment")).value;
+    let storedMessage = "";
+    JSON.parse(localStorage.getItem("comment")) !== null
+      ? (storedMessage = JSON.parse(localStorage.getItem("comment")).value)
+      : (storedMessage = "");
+
     return (
       <div className="comments">
         <h3>Comments</h3>
-        {user.length === 0 ? (
+        {user === null || user.length === 0 ? (
           <>
             <textarea
-              rows="4"
+              rows="1"
               cols="50"
               id="addComment"
               placeholder="Log in to add comments"
               onChange={this.handleInvalidComment}
             />
-            <span
-              role="img"
-              aria-label="postbox"
+            <button
               onClick={e => {
                 if (user.length === 0) {
                   window.confirm("Please log in");
                 }
               }}
             >
-              &#128238;
-            </span>
+              <span role="img" aria-label="postbox">
+                &#128238;
+              </span>
+            </button>
           </>
         ) : (
           <p>
             <textarea
-              rows="4"
+              rows="1"
               cols="50"
               id="addComment"
               placeholder="Type your comment here..."
@@ -84,12 +89,13 @@ class Comments extends Component {
     });
   };
 
-  sendComment = () => {
+  sendComment = async () => {
     api.postComment(
       this.props.article_id,
       this.props.user[0].username,
       this.state.addComment
     );
+    await this.componentDidMount();
   };
 }
 
