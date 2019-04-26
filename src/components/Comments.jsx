@@ -13,7 +13,12 @@ class Comments extends Component {
         <h3>Comments</h3>
         {user.length === 0 ? (
           <>
-            <input id="add-comment" placeholder="Log in to add comments" />
+            <textarea
+              rows="4"
+              cols="50"
+              id="add-comment"
+              placeholder="Log in to add comments"
+            />
             <span
               role="img"
               aria-label="postbox"
@@ -27,12 +32,17 @@ class Comments extends Component {
             </span>
           </>
         ) : (
-          <>
-            <input id="add-comment" placeholder="Add Comment" />
+          <p>
+            <textarea
+              rows="4"
+              cols="50"
+              id="add-comment"
+              placeholder="Type your comment here..."
+            />
             <span role="img" aria-label="postbox">
               &#128238;
             </span>
-          </>
+          </p>
         )}
         <CommentCard comments={this.state.comments} user={user} />
       </div>

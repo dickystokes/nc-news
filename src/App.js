@@ -20,7 +20,7 @@ class App extends Component {
       <div className="App">
         <Heading />
         <Nav topics={this.state.topics} />
-        <Auth login={this.login} user={this.state.user} />
+        <Auth login={this.login} logout={this.logout} user={this.state.user} />
         <Toolbar />
         <Router className="Router">
           <Articles path="/" />
@@ -37,10 +37,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const storedData = JSON.parse(localStorage.getItem("user"));
-    // storedData !== null ? storedData : null;
     this.fetchTopics();
-    this.login();
+    const storedData = JSON.parse(localStorage.getItem("user"));
+    storedData !== []
+      ? this.setState({ user: storedData })
+      : this.setState({ user: [] });
   }
 
   fetchTopics = () => {
@@ -64,6 +65,12 @@ class App extends Component {
         });
       })
       .catch(console.log);
+  };
+
+  logout = () => {
+    this.setState({
+      user: ""
+    });
   };
 }
 

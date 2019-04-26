@@ -22,10 +22,10 @@ class Auth extends Component {
             </form>
           </>
         ) : (
-          <p className="Auth">
+          <form className="Auth" onSubmit={this.handleLogout}>
             {`Logged in as ${user[0].name}`}
-            <button>Logout</button>
-          </p>
+            <input type="submit" value="Logout" />
+          </form>
         )}
       </>
     );
@@ -42,5 +42,11 @@ class Auth extends Component {
     const { username } = this.state;
     this.props.login(username);
   };
+
+  handleLogout = e => {
+    e.preventDefault();
+    this.props.logout();
+  };
 }
+
 export default Auth;
