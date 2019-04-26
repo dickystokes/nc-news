@@ -45,7 +45,13 @@ class Articles extends Component {
           articles
         });
       })
-      .catch(console.log, "<--this is an error");
+      .catch(() => {
+        const { navigate } = this.props;
+        navigate("/errors/404", {
+          replace: true,
+          state: { msg: `couldn’t find any articles on your request` }
+        });
+      });
   };
 }
 

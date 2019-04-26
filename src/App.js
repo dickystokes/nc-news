@@ -9,6 +9,7 @@ import * as api from "./api";
 import ArticleCard from "./components/ArticleCard";
 import Toolbar from "./components/Toolbar";
 import Auth from "./components/Auth";
+import Errors from "./components/Errors";
 
 class App extends Component {
   state = {
@@ -23,6 +24,7 @@ class App extends Component {
         <Auth login={this.login} logout={this.logout} user={this.state.user} />
         <Toolbar />
         <Router className="Router">
+          <Errors default />
           <Articles path="/" />
           <Articles path="/topics/:topic" />
           <ArticleCard
