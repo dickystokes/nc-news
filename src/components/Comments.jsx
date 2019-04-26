@@ -8,6 +8,7 @@ class Comments extends Component {
   };
   render() {
     const { user } = this.props;
+    const storedMessage = JSON.parse(localStorage.getItem("comment")).value;
     return (
       <div className="comments">
         <h3>Comments</h3>
@@ -18,6 +19,7 @@ class Comments extends Component {
               cols="50"
               id="add-comment"
               placeholder="Log in to add comments"
+              onChange={this.handleComment}
             />
             <span
               role="img"
@@ -38,7 +40,9 @@ class Comments extends Component {
               cols="50"
               id="add-comment"
               placeholder="Type your comment here..."
-            />
+            >
+              {storedMessage}
+            </textarea>
             <span role="img" aria-label="postbox">
               &#128238;
             </span>
@@ -62,6 +66,11 @@ class Comments extends Component {
         });
       })
       .catch(console.log, "<--this is an error");
+  };
+
+  handleComment = e => {
+    const { value } = e.target;
+    localStorage.setItem("comment", JSON.stringify({ value }));
   };
 }
 
