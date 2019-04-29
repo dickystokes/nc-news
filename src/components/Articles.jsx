@@ -8,9 +8,14 @@ class Articles extends Component {
   };
   render() {
     const { articles } = this.state;
+    const { topic } = this.props;
     return (
       <div className="Articles-list">
-        <h2>All Articles</h2>
+        <h2>
+          {topic === undefined
+            ? `Articles about Everything`
+            : `Articles about ${topic}`}
+        </h2>
         <ul>
           {articles.map(article => (
             <li
