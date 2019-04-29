@@ -56,7 +56,8 @@
   margin-bottom: auto;
   align-items: center;
   background-color: red;
-  border-radius: 10px;
+  border-radius: 15px;
+  height: 40px;
 }
 
 .Nav {
