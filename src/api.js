@@ -49,6 +49,5 @@ export const postComment = async (article_id, user, body) => {
     `${BASE_URL}/api/articles/${article_id}/comments`,
     { username: user, body: body }
   );
-  console.log(data);
   return data.comment[0];
 };

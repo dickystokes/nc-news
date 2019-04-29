@@ -4,14 +4,15 @@ import CommentCard from "../components/CommentCard";
 
 class Comments extends Component {
   state = {
-    comments: []
+    comments: [],
+    addComment: this.storedMessage
   };
   render() {
     const { user } = this.props;
-    let storedMessage = "";
-    JSON.parse(localStorage.getItem("comment")) !== null
-      ? (storedMessage = JSON.parse(localStorage.getItem("comment")).value)
-      : (storedMessage = "");
+    const storedMessage =
+      JSON.parse(localStorage.getItem("comment")) !== null
+        ? JSON.parse(localStorage.getItem("comment")).value
+        : "";
 
     return (
       <div className="comments">

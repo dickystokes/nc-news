@@ -8,7 +8,6 @@ class CommentCard extends Component {
   };
   render() {
     const { comments, user } = this.props;
-    console.log(comments);
 
     return (
       <div>
