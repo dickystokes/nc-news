@@ -16,7 +16,7 @@ class Articles extends Component {
             ? `Articles about Everything`
             : `Articles about ${topic}`}
         </h2>
-        <ul>
+        <ul className="list-of-articles">
           {articles.map(article => (
             <li
               id={article.article_id}

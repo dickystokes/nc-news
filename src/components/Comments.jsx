@@ -27,13 +27,14 @@ class Comments extends Component {
               onChange={this.handleInvalidComment}
             />
             <button
+              className="button"
               onClick={e => {
                 if (user.length === 0) {
                   window.confirm("Please log in");
                 }
               }}
             >
-              <span role="img" aria-label="postbox">
+              <span className="emoji" role="img" aria-label="postbox">
                 &#128238;
               </span>
             </button>
@@ -49,8 +50,8 @@ class Comments extends Component {
             >
               {storedMessage}
             </textarea>
-            <button onClick={this.sendComment}>
-              <span role="img" aria-label="postbox">
+            <button className="button" onClick={this.sendComment}>
+              <span className="emoji" role="img" aria-label="postbox">
                 &#128238;
               </span>
             </button>

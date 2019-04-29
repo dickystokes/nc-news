@@ -18,6 +18,7 @@ class CommentCard extends Component {
             {comment.body}
             <hr />
             <button
+              className="button"
               onClick={e => {
                 if (user === null || user.length === 0) {
                   window.confirm("Please log in");
@@ -36,7 +37,7 @@ class CommentCard extends Component {
                 }
               }}
             >
-              <span role="img" aria-label="thumbs-down">
+              <span className="emoji" role="img" aria-label="thumbs-down">
                 &#128078;
               </span>
             </button>
@@ -46,6 +47,7 @@ class CommentCard extends Component {
                 ? this.state.OptimisticVote
                 : 0)}
             <button
+              className="button"
               onClick={e => {
                 if (user === null || user.length === 0) {
                   window.confirm("Please log in");
@@ -64,7 +66,7 @@ class CommentCard extends Component {
                 }
               }}
             >
-              <span role="img" aria-label="thumbs-up">
+              <span className="emoji" role="img" aria-label="thumbs-up">
                 &#128077;
               </span>
             </button>

@@ -20,6 +20,7 @@ class ArticleCard extends Component {
           <p>{article.body}</p> <hr />
           Votes : {article.votes + this.state.OptimisticVote}
           <button
+            className="button"
             onClick={e => {
               if (user.length === 0) {
                 window.confirm("Please log in");
@@ -40,6 +41,7 @@ class ArticleCard extends Component {
             I love it!
           </button>
           <button
+            className="button"
             onClick={e => {
               if (user.length === 0) {
                 window.confirm("Please log in");

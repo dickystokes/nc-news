@@ -9,11 +9,21 @@
 
 .articles {
   background-color: rgba(255, 0, 43, 0.1);
-  overflow-y: scroll;
+  border: 1px solid black;
   max-height: 75vh;
+  overflow-y: scroll;
 }
 
 .comments {
   background-color: rgb(3, 3, 245, 0.1);
   overflow-y: scroll;
+}
+
+.button {
+  background: none;
+  border: none;
+}
+
+.emoji {
+  font-size: 2em;
 }

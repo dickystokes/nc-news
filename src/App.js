@@ -10,6 +10,7 @@ import ArticleCard from "./components/ArticleCard";
 import Toolbar from "./components/Toolbar";
 import Auth from "./components/Auth";
 import Errors from "./components/Errors";
+import Logo from "./components/Logo";
 
 class App extends Component {
   state = {
@@ -19,6 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Logo />
         <Heading />
         <Nav topics={this.state.topics} />
         <Auth login={this.login} logout={this.logout} user={this.state.user} />
