@@ -38,7 +38,9 @@ class ArticleCard extends Component {
               }
             }}
           >
-            I love it!
+            <span className="emoji" role="img" aria-label="thumbs-down">
+              &#128077;
+            </span>
           </button>
           <button
             className="button"
@@ -59,7 +61,9 @@ class ArticleCard extends Component {
               }
             }}
           >
-            This is Rubbish!
+            <span className="emoji" role="img" aria-label="thumbs-down">
+              &#128078;
+            </span>
           </button>
         </main>
         <Comments article_id={article_id} user={user} />
